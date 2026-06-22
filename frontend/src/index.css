@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #eee5bc;
+  --color-cream-light: #f5efd6;
+  --color-cream-dark: #d9cf9b;
+  --color-chocolate: #572b10;
+  --color-chocolate-light: #7a3d1a;
+  --color-chocolate-dark: #3d1d0a;
+  --color-gold: #b8893a;
+  --color-gold-light: #d4a85a;
+  --color-rose: #b9768c;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #eee5bc;
+  color: #572b10;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+body {
+  font-feature-settings: "cv11", "ss01", "ss03";
+}
+
+.font-serif {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.01em;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #eee5bc;
+}
+::-webkit-scrollbar-thumb {
+  background: #572b10;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3d1d0a;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.luxury-shadow {
+  box-shadow: 0 8px 32px rgba(87, 43, 16, 0.15), 0 2px 8px rgba(87, 43, 16, 0.08);
+}
+
+.luxury-shadow-lg {
+  box-shadow: 0 20px 60px rgba(87, 43, 16, 0.25), 0 8px 16px rgba(87, 43, 16, 0.12);
+}
+
+.chocolate-gradient {
+  background: linear-gradient(135deg, #3d1d0a 0%, #572b10 50%, #7a3d1a 100%);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-primary {
+  background: #572b10;
+  color: #eee5bc;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  transition: all 0.3s ease;
+  border: 1px solid #572b10;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: #3d1d0a;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(87, 43, 16, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #572b10;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  border: 1px solid #572b10;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: #572b10;
+  color: #eee5bc;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #b8893a 0%, #d4a85a 100%);
+  color: #3d1d0a;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(184, 137, 58, 0.4);
+}
+
+.input-luxury {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(87, 43, 16, 0.2);
+  color: #572b10;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.input-luxury:hover {
+  border-color: rgba(87, 43, 16, 0.4);
+}
+.input-luxury:focus {
+  border-color: #572b10;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 3px rgba(87, 43, 16, 0.1);
+}
+.input-luxury::placeholder {
+  color: rgba(87, 43, 16, 0.4);
+}
+
+.card-luxury {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(87, 43, 16, 0.08);
+  border-radius: 1rem;
+  transition: all 0.4s ease;
+}
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(87, 43, 16, 0.18);
+}
+
+.card-admin {
+  background: #eee5bc;
+  border: 1px solid rgba(87, 43, 16, 0.15);
+  border-radius: 1rem;
+  transition: all 0.4s ease;
+}
+.card-admin:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.card-admin-soft {
+  background: #f5efd6;
+  border: 1px solid rgba(87, 43, 16, 0.12);
+  border-radius: 0.75rem;
+}
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #b8893a, transparent);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #b8893a 0%, #d4a85a 50%, #b8893a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
