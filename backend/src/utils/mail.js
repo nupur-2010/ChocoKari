@@ -37,10 +37,10 @@ const sendEmail = async (options) => {
     }
 };
 
-const verifyMailgenContent = (username, otp) => {
+const verifyMailgenContent = (fullname, otp) => {
     return {
         body: {
-            name: username,
+            name: fullname,
             intro: "Welcome to ChocoKari! We\'re very excited to have you on board.",
             action: {
                 instructions:
@@ -55,10 +55,10 @@ const verifyMailgenContent = (username, otp) => {
     };
 };
 
-const forgotPasswordMailgenContent = (username, forgot_password_url) => {
+const forgotPasswordMailgenContent = (fullname, forgot_password_url) => {
     return {
         body: {
-            name: username,
+            name: fullname,
             intro: "You have received this email because a password reset request for your account was received.",
             action: {
                 instructions: "Click the button below to reset your password:",
@@ -73,10 +73,10 @@ const forgotPasswordMailgenContent = (username, forgot_password_url) => {
     };
 };
 
-const shippedOrderMailgenContent = (username, orderId, trackingId, trackingLink) => {
+const shippedOrderMailgenContent = (fullname, orderId, trackingId, trackingLink) => {
     return {
         body: {
-            name: username,
+            name: fullname,
             intro: `Great news! Your ChocoKari order #${orderId.slice(-8).toUpperCase()} has been shipped.`,
             table: {
                 data: [
