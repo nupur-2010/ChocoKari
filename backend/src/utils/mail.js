@@ -15,11 +15,14 @@ const sendEmail = async (options) => {
     const emailText = mailGenerator.generatePlaintext(options.mailgenContent);
 
     const transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
         auth: {
             user: process.env.EMAIL,
             pass: process.env.GOOGLE_APP_PASSWORD,
         },
+        connectionTimeout: 10000,
     });
 
     const mail = {
