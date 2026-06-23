@@ -30,11 +30,7 @@ const sendEmail = async (options) => {
         html: emailBody,
     };
 
-    try {
-        await transporter.sendMail(mail);
-    } catch (error) {
-        console.error("Error occured while sending email", error);
-    }
+    await transporter.sendMail(mail);
 };
 
 const verifyMailgenContent = (fullname, otp) => {
