@@ -1178,7 +1178,5 @@ export const getSuggestedPrompts = () => [
     { label: "Bestsellers", text: "Show me your bestsellers" },
     { label: "Custom Box", text: "How does the custom builder work?" },
     { label: "Corporate Orders", text: "Tell me about bulk corporate orders" },
-    { label: "Chocolate Matchmaker", text: "Tell me about the Chocolate Matchmaker" },
-    { label: "Shipping", text: "What are your shipping charges and delivery times?" },
-    { label: "Returns", text: "What is your return and cancellation policy?" },
+    { label: "Chocolate Matchmaker", text: "Tell me about the Chocolate Matchmaker" }
 ];

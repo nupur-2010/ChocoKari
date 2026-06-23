@@ -46,7 +46,7 @@ export default function Search() {
                 <input
                     autoFocus
                     value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    onChange={(e) => setQuery(e.target.value.trim())}
                     placeholder="Search chocolates, flavours..."
                     className="w-full pl-14 pr-14 py-2.5 rounded-full bg-white/60 border border-chocolate/15 focus:border-chocolate outline-none text-chocolate text-md transition-colors"
                 />
