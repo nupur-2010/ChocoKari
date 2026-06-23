@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import Mailgen from "mailgen";
+import { promises as dns } from "dns";
 
 const sendEmail = async (options) => {
     const mailGenerator = new Mailgen({
@@ -14,8 +15,9 @@ const sendEmail = async (options) => {
 
     const emailText = mailGenerator.generatePlaintext(options.mailgenContent);
 
+    const addresses = await dns.resolve4("smtp.gmail.com");
     const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
+        host: addresses[0],
         port: 587,
         secure: false,
         auth: {
