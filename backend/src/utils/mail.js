@@ -1,6 +1,7 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import Mailgen from "mailgen";
-import { promises as dns } from "dns";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async (options) => {
     const mailGenerator = new Mailgen({
@@ -11,31 +12,18 @@ const sendEmail = async (options) => {
         },
     });
 
-    const emailBody = mailGenerator.generate(options.mailgenContent);
+    const html = mailGenerator.generate(options.mailgenContent);
+    const text = mailGenerator.generatePlaintext(options.mailgenContent);
 
-    const emailText = mailGenerator.generatePlaintext(options.mailgenContent);
-
-    const addresses = await dns.resolve4("smtp.gmail.com");
-    const transporter = nodemailer.createTransport({
-        host: addresses[0],
-        port: 587,
-        secure: false,
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.GOOGLE_APP_PASSWORD,
-        },
-        connectionTimeout: 10000,
-    });
-
-    const mail = {
-        from: `"ChocoKari" <${process.env.EMAIL}>`,
+    const { error } = await resend.emails.send({
+        from: "ChocoKari <onboarding@resend.dev>",
         to: options.email,
         subject: options.subject,
-        text: emailText,
-        html: emailBody,
-    };
+        text,
+        html,
+    });
 
-    await transporter.sendMail(mail);
+    if (error) throw error;
 };
 
 const verifyMailgenContent = (fullname, otp) => {
