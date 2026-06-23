@@ -17,6 +17,12 @@ import Search from "./pages/Search";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
+import About from "./pages/About";
+import FAQs from "./pages/FAQs";
+import Terms from "./pages/Terms";
+import Shipping from "./pages/Shipping";
+import Returns from "./pages/Returns";
+import Privacy from "./pages/Privacy";
 import Admin from "./pages/Admin";
 import AdminRedirect from "./pages/AdminRedirect";
 import ScrollToTop from "./components/ScrollToTop";
@@ -60,6 +66,12 @@ const App = () => (
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                             <Route path="/user/reset-password/:unhashedToken" element={<ResetPassword />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/faqs" element={<FAQs />} />
+                            <Route path="/terms" element={<Terms />} />
+                            <Route path="/shipping" element={<Shipping />} />
+                            <Route path="/returns" element={<Returns />} />
+                            <Route path="/privacy" element={<Privacy />} />
                             <Route path="/admin" element={<AdminGuard><Admin /></AdminGuard>} />
                             <Route path="*" element={<div className="p-20 text-center text-chocolate/60">Page not found</div>} />
                         </Routes>

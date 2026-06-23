@@ -1,13 +1,28 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 
+const FooterCol = ({ title, children }) => (
+    <div>
+        <h4 className="text-[11px] font-semibold tracking-[0.18em] uppercase mb-4 text-gold-light">{title}</h4>
+        <ul className="space-y-2 text-sm text-cream/80">{children}</ul>
+    </div>
+);
+
+const FooterLink = ({ to, children }) => (
+    <li>
+        <Link to={to} className="hover:text-cream transition-colors duration-150">
+            {children}
+        </Link>
+    </li>
+);
+
 export default function Footer() {
     return (
         <footer className="mt-25 chocolate-gradient text-cream">
-            <div className="max-w-7xl mx-auto px-6 py-5">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-                    <div>
-                        <div className="mb-4 flex justify-center">
+            <div className="max-w-7xl mx-auto px-6 py-8">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-6">
+                    <div className="col-span-2 md:col-span-1">
+                        <div className="mb-4 flex justify-center md:justify-start">
                             <img
                                 src="/footer_logo.png"
                                 alt="ChocoKari"
@@ -15,43 +30,51 @@ export default function Footer() {
                                 className="h-14 w-auto object-contain"
                             />
                         </div>
-                        <p className="text-sm text-cream/70 leading-relaxed text-center">
+                        <p className="text-sm text-cream/70 leading-relaxed text-center md:text-left">
                             Handcrafted artisan chocolates, made fresh with premium ingredients and filled with love.
                         </p>
                     </div>
 
-                    <div>
-                        <h4 className="text-sm font-semibold tracking-widest uppercase mb-4 text-gold-light">Shop</h4>
-                        <ul className="space-y-2 text-sm text-cream/80">
-                            <li><Link to="/products" className="hover:text-cream transition">All Products</Link></li>
-                            <li><Link to="/products?collection=Classic" className="hover:text-cream transition">Classic</Link></li>
-                            <li><Link to="/products?collection=Signature" className="hover:text-cream transition">Signature</Link></li>
-                            <li><Link to="/products?collection=Royale" className="hover:text-cream transition">Royale</Link></li>
-                            <li><Link to="/custom-builder" className="hover:text-cream transition">Custom Builder</Link></li>
-                        </ul>
-                    </div>
+                    <FooterCol title="Shop">
+                        <FooterLink to="/products">All Products</FooterLink>
+                        <FooterLink to="/custom-builder">Custom Builder</FooterLink>
+                        <FooterLink to="/corporate">Bulk Corporate</FooterLink>
+                    </FooterCol>
 
-                    <div>
-                        <h4 className="text-sm font-semibold tracking-widest uppercase mb-4 text-gold-light">Discover</h4>
-                        <ul className="space-y-2 text-sm text-cream/80">
-                            <li><Link to="/matchmaker" className="hover:text-cream transition">Chocolate Matchmaker</Link></li>
-                            <li><Link to="/corporate" className="hover:text-cream transition">Bulk Corporate</Link></li>
-                        </ul>
-                    </div>
+                    <FooterCol title="Discover">
+                        <FooterLink to="/matchmaker">Chocolate Matchmaker</FooterLink>
+                        <FooterLink to="/about">About Us</FooterLink>
+                        <FooterLink to="/faqs">FAQs</FooterLink>
+                    </FooterCol>
 
-                    <div>
-                        <h4 className="text-sm font-semibold tracking-widest uppercase mb-4 text-gold-light">Contact</h4>
-                        <ul className="space-y-3 text-sm text-cream/80">
-                            <li className="flex items-center gap-2"><Mail size={14} className="text-gold-light" /> hello.chocokari@gmail.com</li>
-                            <li className="flex items-center gap-2"><Phone size={14} className="text-gold-light" /> +91 8976002540</li>
-                            <li className="flex items-center gap-2"><MapPin size={14} className="text-gold-light" /> Indore, Madhya Pradesh, India</li>
-                        </ul>
-                    </div>
+                    <FooterCol title="Policies">
+                        <FooterLink to="/terms">Terms & Conditions</FooterLink>
+                        <FooterLink to="/shipping">Shipping Policy</FooterLink>
+                        <FooterLink to="/returns">Return & Cancellation</FooterLink>
+                        <FooterLink to="/privacy">Privacy Policy</FooterLink>
+                    </FooterCol>
+
+                    <FooterCol title="Contact">
+                        <li className="flex items-start gap-2">
+                            <Mail size={14} className="text-gold-light mt-0.5 shrink-0" />
+                            <a href="mailto:hello.chocokari@gmail.com" className="hover:text-cream transition-colors break-all">
+                                hello.chocokari@gmail.com
+                            </a>
+                        </li>
+                        <li className="flex items-center gap-2">
+                            <Phone size={14} className="text-gold-light shrink-0" /> +91 8976002540
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <MapPin size={14} className="text-gold-light mt-0.5 shrink-0" /> Indore, Madhya Pradesh, India
+                        </li>
+                    </FooterCol>
                 </div>
 
-                <div className="border-t border-cream/15 mt-5 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-cream/60">
-                    <p>© 2023 ChocoKari. Handcrafted with love.</p>
-                    <p>All chocolates are 100% vegetarian. Made in India.</p>
+                <div className="border-t border-cream/15 mt-10 pt-6">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-cream/60">
+                        <p>© {new Date().getFullYear()} ChocoKari. Handcrafted with love.</p>
+                        <p>All chocolates are 100% vegetarian. Made in India.</p>
+                    </div>
                 </div>
             </div>
         </footer>

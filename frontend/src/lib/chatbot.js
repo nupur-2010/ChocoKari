@@ -567,8 +567,23 @@ export const askChatbot = async (rawQuestion) => {
             `- Type: ${KB.brand.type}\n` +
             `- Location: ${KB.brand.location}\n` +
             `- Mission: ${KB.brand.mission}\n` +
-            `- Tagline: "${KB.brand.tagline}"`
+            `- Tagline: "${KB.brand.tagline}"\n\n` +
+            `Read the full story on our /about page.`
         );
+    }
+
+    // ── Policy pages ───────────────────────────
+    if (match(q, ["terms", "terms and conditions", "terms of service", "conditions of use", "t&c", "t and c"])) {
+        ctx.update("terms");
+        return `Our full Terms & Conditions are available on the /terms page. Key points: by placing an order you agree to our terms, all prices are in INR inclusive of GST, and orders may be cancelled within 24 hours if not yet shipped.`;
+    }
+    if (match(q, ["privacy policy", "privacy", "data protection", "my data", "personal information"])) {
+        ctx.update("privacy");
+        return `Our full Privacy Policy is on the /privacy page. Quick summary: we collect only what we need to process orders, we never sell your data, and you can request access, correction, or deletion anytime. Email hello.chocokari@gmail.com for privacy queries.`;
+    }
+    if (match(q, ["faqs", "frequently asked", "common questions", "help center", "help centre"])) {
+        ctx.update("faqs");
+        return `We have a comprehensive /faqs page with answers to 35+ questions across 7 categories (Products, Custom Builder, Bulk, Shipping, Payment, Returns, Account). You can also search within the page. Want me to answer a specific question here?`;
     }
 
     // ── Website pages overview ───────────────
@@ -1164,4 +1179,6 @@ export const getSuggestedPrompts = () => [
     { label: "Custom Box", text: "How does the custom builder work?" },
     { label: "Corporate Orders", text: "Tell me about bulk corporate orders" },
     { label: "Chocolate Matchmaker", text: "Tell me about the Chocolate Matchmaker" },
+    { label: "Shipping", text: "What are your shipping charges and delivery times?" },
+    { label: "Returns", text: "What is your return and cancellation policy?" },
 ];
